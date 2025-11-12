@@ -8,7 +8,8 @@ service,round(avg(departure_date - arrival_date))avg_length_of_stay,
 count(patient_id)total_patients 
 from patients
 group by service
-having round(avg(departure_date - arrival_date))>7 ; 
+having round(avg(departure_date - arrival_date))>7 
+order by count(patient_id) desc ,round(avg(departure_date - arrival_date)) desc;  
 
 --Practice Questions
 --1. Extract the year from all patient arrival dates.
@@ -22,4 +23,5 @@ from patients;
 select patient_id,name, arrival_date
 from patients
 where extract(month from arrival_date)=8;
+
 ;
