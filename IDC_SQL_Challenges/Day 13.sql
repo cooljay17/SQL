@@ -10,7 +10,7 @@ from patients p
 inner join staff s on p.service=s.service
 group by patient_id, name, 
 age, p.service
---having count(staff_id)>5
+having count(staff_id)>5
 order by count(staff_id) desc,name;
 
 --### Practice Questions:
@@ -28,4 +28,5 @@ inner join staff s on w.service=s.service;
 --3. Create a report showing patient information along with staff assigned to their service.
 select p.*,s.staff_name as staff_assigned
 from patients p
+
 inner join staff s on p.service=s.service;
