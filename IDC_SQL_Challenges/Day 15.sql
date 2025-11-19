@@ -42,4 +42,23 @@ staff_present_days
 from p  left join  s on p.service=s.service and p.week=s.week
 order by total_patients_admitted desc;
 
+select s.week,s.service,max(patients_admitted)total_patients_admitted,
+max(patients_refused)total_patients_refused,
+round(avg(patient_satisfaction),2)average_patient_satisfaction,
+count(staff_id)num_of_staff_assigned,
+sum(present)staff_present_days
+from services_weekly p  
+left join  staff_schedule s on p.service=s.service and p.week=s.week
+where p.week=20
+group by s.week,s.service
+order by max(patients_admitted)desc;
+
+select week,service,(patients_admitted)total_patients_admitted,
+(patients_refused)total_patients_refused
+--,
+--round(avg(patient_satisfaction),2)average_patient_satisfaction
+from services_weekly   
+where week=28
+group by week,service; 
+
 
